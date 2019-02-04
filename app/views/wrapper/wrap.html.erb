@@ -1,0 +1,24 @@
+<div id="form-container">
+	<%= form_tag wrap_wrapper_index_path, method: :get do %>
+    <div class="form-field">
+      Enter the text you want to process:<br>
+  		<%= text_area_tag :text %>      
+    </div>
+    <div class="form-field">
+  		Column size: <br>
+      <%= number_field_tag :column_number %><br>
+    </div>
+    <div class="form-submit">
+  		<%= submit_tag "Process text" %>
+    </div>
+	<% end %>
+</div>
+
+<div id="processed-text">
+	<% if params[:text] %>
+    <h2>Processed text</h2>
+		<% @processed_chunks.each do |chunk| %>
+      <%= chunk %><br>
+    <% end %>
+	<% end %>
+</div>
